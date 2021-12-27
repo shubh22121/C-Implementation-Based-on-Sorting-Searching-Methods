@@ -83,6 +83,74 @@ public:
         curr->next = temp;
         size++;
     }
+
+    void delete_begin()
+    {
+        if (head == NULL)
+        {
+            cout << "List is Empty" << endl;
+            return;
+        }
+        Node *temp = head;
+        head = head->next;
+        delete temp;
+        size--;
+    }
+
+
+    void delete_end()
+    {
+        if (head == NULL)
+        {
+            cout << "List is Empty" << endl;
+            return;
+        }
+        Node *curr = head;
+        Node *prev = NULL;
+        while (curr->next != NULL)
+        {
+            prev = curr;
+            curr = curr->next;
+        }
+        tail = prev;
+        prev->next = NULL;
+        delete curr;
+        size--;
+    }
+
+    void delete_pos(int pos)
+    {
+        if (head == NULL)
+        {
+            cout << "List is Empty" << endl;
+            return;
+        }
+        if (pos < 0 || pos > size)
+        {
+            cout << "Invalid Position" << endl;
+            return;
+        }
+        if (pos == 0)
+        {
+            delete_begin();
+            return;
+        }
+        if (pos == size)
+        {
+            delete_end();
+            return;
+        }
+        Node *curr = head;
+        Node *prev = NULL;
+        for (int i = 0; i < pos; i++)
+        {
+            prev = curr;
+            curr = curr->next;
+        }
+        prev->next = curr->next;
+        delete curr;
+        size--;
+    }
     
     void print()
         {
@@ -107,7 +175,9 @@ int main()
     l.insert(40, 3);
     l.insert_begin(50);
     l.insert_end(60);
-
+    l.delete_begin();
+    l.delete_end();
+    l.delete_pos(2);
     l.print();
     return 0;
 }
