@@ -4,11 +4,11 @@ struct Node {
 	int data;
 	struct Node* next;
 };
-// Two glboal variables to store address of front and rear nodes. 
+
 struct Node* front = NULL;
 struct Node* rear = NULL;
 
-// To Enqueue an integer
+
 void Enqueue(int x) {
 	struct Node* temp = 
 		(struct Node*)malloc(sizeof(struct Node));
@@ -22,7 +22,7 @@ void Enqueue(int x) {
 	rear = temp;
 }
 
-// To Dequeue an integer.
+
 void Dequeue() {
 	struct Node* temp = front;
 	if(front == NULL) {
@@ -56,8 +56,7 @@ void Print() {
 }
 
 int main(){
-	/* Drive code to test the implementation. */
-	// Printing elements in Queue after each Enqueue or Dequeue 
+	
 	Enqueue(2); Print(); 
 	Enqueue(4); Print();
 	Enqueue(6); Print();
